@@ -23,7 +23,6 @@
         <spring-cloud.version>2.1.2.RELEASE</spring-cloud.version>
         <liquibase.version>3.6.3</liquibase.version>
         <postgres.version>42.2.6</postgres.version>
-        <groovy.version>2.5.7</groovy.version>
         <liquibase-groovy-dsl.version>2.0.3</liquibase-groovy-dsl.version>
     </properties>
 
@@ -62,16 +61,6 @@
                 <version>${postgres.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.codehaus.groovy</groupId>
-                <artifactId>groovy</artifactId>
-                <version>${groovy.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.codehaus.groovy</groupId>
-                <artifactId>groovy-sql</artifactId>
-                <version>${groovy.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-groovy-dsl</artifactId>
                 <version>${liquibase-groovy-dsl.version}</version>
@@ -102,6 +91,13 @@
                     <groupId>org.liquibase</groupId>
                     <artifactId>liquibase-maven-plugin</artifactId>
                     <version>${liquibase.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.liquibase</groupId>
+                            <artifactId>liquibase-groovy-dsl</artifactId>
+                            <version>${liquibase-groovy-dsl.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
             </plugins>
         </pluginManagement>
