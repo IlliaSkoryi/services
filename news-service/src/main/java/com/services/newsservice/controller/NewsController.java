@@ -24,9 +24,8 @@ public class NewsController {
         NewsPost newsPost = newsService.getNewsById(id);
         if (newsPost != null) {
             return ResponseEntity.ok(newsPost);
-        } else {
-            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.notFound().build();
     }
 
     @GetMapping
@@ -34,8 +33,7 @@ public class NewsController {
         List<NewsPost> newsPosts = newsService.getAllNews();
         if (CollectionUtils.isEmpty(newsPosts)) {
             return ResponseEntity.notFound().build();
-        } else {
-            return ResponseEntity.ok(newsPosts);
         }
+        return ResponseEntity.ok(newsPosts);
     }
 }
