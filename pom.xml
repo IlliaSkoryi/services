@@ -24,6 +24,7 @@
         <liquibase.version>3.6.3</liquibase.version>
         <postgres.version>42.2.6</postgres.version>
         <liquibase-groovy-dsl.version>2.0.3</liquibase-groovy-dsl.version>
+        <spring-boot-data-jpa-starter.version>2.1.6.RELEASE</spring-boot-data-jpa-starter.version>
     </properties>
 
     <dependencyManagement>
@@ -64,6 +65,11 @@
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-groovy-dsl</artifactId>
                 <version>${liquibase-groovy-dsl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring-boot-data-jpa-starter.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
