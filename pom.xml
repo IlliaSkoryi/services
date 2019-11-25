@@ -14,6 +14,7 @@
         <module>news-service</module>
         <module>users-service</module>
         <module>db</module>
+        <module>discovery</module>
     </modules>
 
     <properties>
@@ -25,6 +26,7 @@
         <postgres.version>42.2.6</postgres.version>
         <liquibase-groovy-dsl.version>2.0.3</liquibase-groovy-dsl.version>
         <spring-boot-data-jpa-starter.version>2.1.6.RELEASE</spring-boot-data-jpa-starter.version>
+        <gson>2.8.6</gson>
     </properties>
 
     <dependencyManagement>
@@ -82,6 +84,12 @@
                 <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
                 <version>${spring-cloud.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
