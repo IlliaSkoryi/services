@@ -1,5 +1,7 @@
 package com.services.newsservice.model;
 
+import org.springframework.hateoas.ResourceSupport;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,22 +10,23 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "news", schema = "srv")
-public class NewsPost {
+public class NewsPost extends ResourceSupport {
 
     @Id
-    private int id;
+    @Column(name = "id")
+    private int postId;
 
     @Column(name = "title")
     private String title;
     @Column(name = "post")
     private String post;
 
-    public int getId() {
-        return id;
+    public int getPostId() {
+        return postId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPostId(int postId) {
+        this.postId = postId;
     }
 
     public String getTitle() {
@@ -47,11 +50,11 @@ public class NewsPost {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NewsPost newsPost = (NewsPost) o;
-        return id == newsPost.id;
+        return postId == newsPost.postId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(postId);
     }
 }

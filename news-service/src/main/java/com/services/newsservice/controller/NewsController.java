@@ -12,15 +12,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
 @RestController("news controller")
 @RequestMapping("/news")
 public class NewsController {
 
-    @Autowired
     private NewsService newsService;
 
+    @Autowired
+    public NewsController(NewsService newsService) {
+        this.newsService = newsService;
+    }
+
     @GetMapping("/{id}")
-    public ResponseEntity getNewsById(@PathVariable int id) {
+    public ResponseEntity<NewsPost> getNewsById(@PathVariable int id) {
         NewsPost newsPost = newsService.getNewsById(id);
         if (newsPost != null) {
             return ResponseEntity.ok(newsPost);
@@ -29,11 +36,12 @@ public class NewsController {
     }
 
     @GetMapping
-    public ResponseEntity getAllNews() {
+    public ResponseEntity<List<NewsPost>> getAllNews() {
         List<NewsPost> newsPosts = newsService.getAllNews();
         if (CollectionUtils.isEmpty(newsPosts)) {
             return ResponseEntity.notFound().build();
         }
+        newsPosts.forEach(e -> e.add(linkTo(methodOn(NewsController.class).getNewsById(e.getPostId())).withSelfRel()));
         return ResponseEntity.ok(newsPosts);
     }
 }
