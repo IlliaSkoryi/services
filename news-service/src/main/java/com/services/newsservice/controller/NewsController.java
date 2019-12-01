@@ -30,6 +30,7 @@ public class NewsController {
     public ResponseEntity<NewsPost> getNewsById(@PathVariable int id) {
         NewsPost newsPost = newsService.getNewsById(id);
         if (newsPost != null) {
+            newsPost.add(linkTo(methodOn(NewsController.class).getAllNews()).withRel("all"));
             return ResponseEntity.ok(newsPost);
         }
         return ResponseEntity.notFound().build();
