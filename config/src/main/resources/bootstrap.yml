@@ -10,4 +10,4 @@ spring:
       server:
         native:
           search-locations:
-            file:///home/illia/Documents/git/services/config/src/main/resources/com/services/config
+            classpath:com/services/config
