@@ -1,5 +1,7 @@
 package com.services.usersservice.model;
 
+import org.springframework.hateoas.ResourceSupport;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,10 +10,11 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "users", schema = "srv")
-public class User {
+public class User extends ResourceSupport {
 
     @Id
-    private int id;
+    @Column(name = "id")
+    private int userId;
 
     @Column(name = "email")
     private String email;
@@ -25,12 +28,12 @@ public class User {
     @Column(name = "profile_image")
     private String profileImagePath;
 
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {
@@ -70,12 +73,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id &&
+        return userId == user.userId &&
                 email.equals(user.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, email);
+        return Objects.hash(userId, email);
     }
 }
