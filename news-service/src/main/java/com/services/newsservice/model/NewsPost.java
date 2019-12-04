@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
 
+/**
+ * NewsPost entity class. Provides mapping to news table.
+ */
 @Entity
 @Table(name = "news", schema = "srv")
 public class NewsPost extends ResourceSupport {
@@ -47,8 +50,12 @@ public class NewsPost extends ResourceSupport {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         NewsPost newsPost = (NewsPost) o;
         return postId == newsPost.postId;
     }
