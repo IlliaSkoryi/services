@@ -70,13 +70,14 @@
                         <id>validate</id>
                         <phase>compile</phase>
                         <configuration>
-                            <configLocation>checkstyle.xml</configLocation>
+                            <configLocation>src/main/resources/checkstyle/checkstyle.xml</configLocation>
                             <encoding>UTF-8</encoding>
                             <violationSeverity>warning</violationSeverity>
                             <failOnViolation>true</failOnViolation>
                             <maxAllowedViolations>0</maxAllowedViolations>
                         </configuration>
                         <goals>
+                            <goal>checkstyle</goal>
                             <goal>check</goal>
                         </goals>
                     </execution>
