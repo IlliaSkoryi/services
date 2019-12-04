@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
 
+/**
+ * User entity class. Provides mapping to users table.
+ */
 @Entity
 @Table(name = "users", schema = "srv")
 public class User extends ResourceSupport {
@@ -70,11 +73,14 @@ public class User extends ResourceSupport {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         User user = (User) o;
-        return userId == user.userId &&
-                email.equals(user.email);
+        return userId == user.userId && email.equals(user.email);
     }
 
     @Override
