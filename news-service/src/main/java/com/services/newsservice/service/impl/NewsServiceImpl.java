@@ -9,11 +9,23 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * User service API implementation.
+ */
 @Service
 public class NewsServiceImpl implements NewsService {
 
+    private final NewsRepository newsRepository;
+
+    /**
+     * Constructor.
+     *
+     * @param newsRepository news Repository dependency
+     */
     @Autowired
-    private NewsRepository newsRepository;
+    public NewsServiceImpl(NewsRepository newsRepository) {
+        this.newsRepository = newsRepository;
+    }
 
     @Override
     public List<NewsPost> getAllNews() {

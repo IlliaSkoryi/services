@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Repository layer for news-service.
+ */
 @Repository
 public interface NewsRepository extends CrudRepository<NewsPost, Integer> {
 
